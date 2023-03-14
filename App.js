@@ -14,7 +14,7 @@ export default class form extends Component {
 
     this.state = {
       user:'',
-      password:'',
+      identification:'',
       message:'',
       carroColor: '',
       proceso: '',
@@ -23,21 +23,21 @@ export default class form extends Component {
     }
     this.user1 = {
       userName: 'julian', 
-      password:'123'
+      identification:'123'
     }
     this.user2 = {
       userName: 'camilo',
-      password:'321'
+      identification:'321'
     }
   }
   onChangeUser(user){
     this.setState({user})
   }
-  onChangePassword(password){
-    this.setState({password})
+  onChangeidentification(identification){
+    this.setState({identification})
   }
   buttonPressed() {  
-    if(this.state.user == this.user1.userName && this.state.password == this.user1.password ) {
+    if(this.state.user == this.user1.userName && this.state.identification == this.user1.identification ) {
       let carroColor = 'Azul';
       let proceso = 'Mantenimiento';
       let fechaIng = '12feb2023';
@@ -47,7 +47,7 @@ export default class form extends Component {
       this.setState({fechaIng})
       this.setState({costo})
     } 
-    else if (this.state.user == this.user2.userName && this.state.password == this.user2.password) {
+    else if (this.state.user == this.user2.userName && this.state.identification == this.user2.identification) {
       let carroColor = 'Rojo';
       let proceso = 'Cambio Aceite';
       let fechaIng= '10feb2023'; 
@@ -81,22 +81,22 @@ export default class form extends Component {
             <Text style={styles.title}>Usuario</Text>
             <TextInput 
               style={styles.input}
-              placeholder='User'
+              placeholder='nombre de usuario'
               value={this.state.user}
               onChangeText={(user) => this.onChangeUser(user)}
             />
-            <Text style={styles.title}>Contraseña</Text>
+            <Text style={styles.title}>Identificacion</Text>
             <TextInput 
               style={styles.input}
-              placeholder='Password'
-              value={this.state.password}
-              onChangeText={(password) => this.onChangePassword(password)}
+              placeholder='identificacion'
+              value={this.state.identification}
+              onChangeText={(identification) => this.onChangeidentification(identification)}
             />
             <TouchableHighlight 
             style={styles.button}
             onPress={() => this.buttonPressed()}
             >
-              <Text style={styles.textButton}>Login</Text>
+              <Text style={styles.textButton}>Buscar</Text>
             </TouchableHighlight>
             <Text style={styles.title}>{this.state.message}</Text>
             <Text style={styles.title}>carro color: {this.state.carroColor}</Text>
