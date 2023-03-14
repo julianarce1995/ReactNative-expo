@@ -76,7 +76,7 @@ export default class form extends Component {
   render() {
       return (
         <View style={styles.container}>
-          <Text style={styles.title}>Formulario ReactNative</Text>
+          <Text style={styles.title}>Mi Taller</Text>
           <View>
             <Text style={styles.title}>Usuario</Text>
             <TextInput 
