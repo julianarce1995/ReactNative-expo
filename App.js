@@ -15,11 +15,19 @@ export default class form extends Component {
     this.state = {
       user:'',
       password:'',
-      message:''
+      message:'',
+      carroColor: '',
+      proceso: '',
+      fechaIng: '',
+      costo: ''
     }
-    this.user = {
-      user: 'julian',
-      password: '1234'
+    this.user1 = {
+      userName: 'julian', 
+      password:'123'
+    }
+    this.user2 = {
+      userName: 'camilo',
+      password:'321'
     }
   }
   onChangeUser(user){
@@ -29,14 +37,39 @@ export default class form extends Component {
     this.setState({password})
   }
   buttonPressed() {  
-    if(this.state.user == this.user.user  && this.state.password == this.user.password ) {
-      var message = 'Logueado'
-      this.setState({message})
+    if(this.state.user == this.user1.userName && this.state.password == this.user1.password ) {
+      let carroColor = 'Azul';
+      let proceso = 'Mantenimiento';
+      let fechaIng = '12feb2023';
+      let costo = '10000';
+      this.setState({carroColor})
+      this.setState({proceso})
+      this.setState({fechaIng})
+      this.setState({costo})
     } 
-    else 
+    else if (this.state.user == this.user2.userName && this.state.password == this.user2.password) {
+      let carroColor = 'Rojo';
+      let proceso = 'Cambio Aceite';
+      let fechaIng= '10feb2023'; 
+      let costo= '5000';
+      this.setState({carroColor})
+      this.setState({proceso})
+      this.setState({fechaIng})
+      this.setState({costo})
+    }
+    else
     {
-      var message = 'Error!!'
+      let message = 'Error!!'
       this.setState({message})
+      setTimeout(
+        function() {
+          let message = ''
+          this.setState({message})
+            this.setState({timePassed: true});
+        }
+        .bind(this),
+        3000
+      );
     }
   }  
 
@@ -66,6 +99,10 @@ export default class form extends Component {
               <Text style={styles.textButton}>Login</Text>
             </TouchableHighlight>
             <Text style={styles.title}>{this.state.message}</Text>
+            <Text style={styles.title}>carro color: {this.state.carroColor}</Text>
+            <Text style={styles.title}>proceso: {this.state.proceso}</Text>
+            <Text style={styles.title}>fecha ingreso: {this.state.fechaIng}</Text>
+            <Text style={styles.title}>costo: {this.state.costo}</Text>
           </View>
         </View>
       );
@@ -89,7 +126,7 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    marginBottom: 20,
+    margin: 15,
     fontSize:22
   },
   button: {
